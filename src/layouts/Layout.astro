@@ -6,6 +6,8 @@ interface Props {
 }
 
 const { title } = Astro.props;
+
+const mcServerHost = import.meta.env.PUBLIC_MC_SERVER_HOST;
 ---
 
 <!doctype html>
@@ -23,7 +25,7 @@ const { title } = Astro.props;
       <div class="mx-auto flex max-w-screen-xl flex-wrap items-center justify-between p-4">
         <a href="/" class="flex items-center space-x-3 rtl:space-x-reverse">
           <Image src="/favicon.svg" alt="sttnbnb logo" width={30} height={30} />
-          <span class="self-center whitespace-nowrap text-2xl font-semibold dark:text-white"> mc.shmn7iii.net</span>
+          <span class="self-center whitespace-nowrap text-2xl font-semibold dark:text-white">{mcServerHost}</span>
         </a>
 
         <button

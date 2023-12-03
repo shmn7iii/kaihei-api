@@ -13,7 +13,7 @@ const { serverStatus } = Astro.props;
     class="mb-8 rounded-lg border border-green-300 bg-green-50 p-4 text-lg text-green-800 dark:border-green-800 dark:bg-gray-800 dark:text-green-400"
     role="alert"
   >
-    <span class="font-bold">Server Online!</span> You can connect server mc.shmn7iii.net:25565
+    <span class="font-bold">Server Online!</span> You can connect server {serverStatus.ip}:{serverStatus.port}
   </div>
   <div class="relative overflow-x-auto">
     <table class="w-full text-left text-gray-500 rtl:text-right dark:text-gray-400">

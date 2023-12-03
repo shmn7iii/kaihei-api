@@ -1,8 +1,9 @@
 DOCKER_FILE=./Dockerfile
+ENV_FILE=.env
 APP_NAME=mcstatus
 
 docker/run: docker/rm docker/build
-	docker run -d -p 4321:80 --name $(APP_NAME) --restart=always $(APP_NAME):latest
+	docker run -d -p 4321:80 --name $(APP_NAME) --env-file=$(ENV_FILE) --restart=always $(APP_NAME):latest
 
 docker/start:
 	docker start $(APP_NAME)

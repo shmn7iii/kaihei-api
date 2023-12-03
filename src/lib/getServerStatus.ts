@@ -31,7 +31,8 @@ export interface ApiResults {
 }
 
 export async function getServerStatus() {
-  const response = await fetch("https://api.mcsrvstat.us/3/mc.shmn7iii.net", {
+  const url = "https://api.mcsrvstat.us/3/" + import.meta.env.PUBLIC_MC_SERVER_HOST;
+  const response = await fetch(url, {
     headers: {
       "Content-Type": "application/json",
     },
