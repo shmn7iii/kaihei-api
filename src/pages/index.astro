@@ -1,7 +1,7 @@
 ---
-import Layout from '../layouts/Layout.astro';
-import Online from '../components/Online.astro';
-import Offline from '../components/Offline.astro';
+import Layout from "../layouts/Layout.astro";
+import Online from "../components/Online.astro";
+import Offline from "../components/Offline.astro";
 
 import { getServerStatus } from "../lib/getServerStatus";
 
@@ -9,16 +9,9 @@ const serverStatus = await getServerStatus();
 ---
 
 <Layout title="Status | mc.shmn7iii.net">
-	<main class="flex min-h-screen flex-col items-center p-10">
-		{
-			serverStatus.online ? (
-				<Online serverStatus={serverStatus}/>
-			) : (
-				<Offline serverStatus={serverStatus}/>
-			)
-		}
-	</main>
+  <main class="flex min-h-screen flex-col items-center p-10">
+    {serverStatus.online ? <Online serverStatus={serverStatus} /> : <Offline serverStatus={serverStatus} />}
+  </main>
 </Layout>
 
-<style>
-</style>
+<style></style>

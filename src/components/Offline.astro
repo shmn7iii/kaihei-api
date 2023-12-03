@@ -5,59 +5,40 @@ export interface Props {
   serverStatus: ApiResults;
 }
 
-const { serverStatus } = Astro.props
+const { serverStatus } = Astro.props;
 ---
+
 <div class="w-3/4 items-center">
   <div
-    class="p-4 mb-8 text-lg text-red-800 border border-red-300 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400 dark:border-red-800"
+    class="mb-8 rounded-lg border border-red-300 bg-red-50 p-4 text-lg text-red-800 dark:border-red-800 dark:bg-gray-800 dark:text-red-400"
     role="alert"
   >
     <span class="font-bold">Server Offline!</span>
   </div>
   <div class="relative overflow-x-auto">
-    <table class="w-full text-left rtl:text-right text-gray-500 dark:text-gray-400">
+    <table class="w-full text-left text-gray-500 rtl:text-right dark:text-gray-400">
       <tbody>
-        <tr class="bg-white border-t border-b dark:bg-gray-800 dark:border-gray-700">
-          <th
-            scope="row"
-            class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white"
-          >
-            Status
-          </th>
+        <tr class="border-b border-t bg-white dark:border-gray-700 dark:bg-gray-800">
+          <th scope="row" class="whitespace-nowrap px-6 py-4 font-medium text-gray-900 dark:text-white"> Status</th>
           <td class="px-6 py-4 text-right">Offline</td>
         </tr>
       </tbody>
     </table>
 
-    <h2 class="mt-8 mb-2 text-xl font-bold dark:text-white">Debug Info</h2>
+    <h2 class="mb-2 mt-8 text-xl font-bold dark:text-white">Debug Info</h2>
 
-    <table class="w-full text-left rtl:text-right text-gray-500 dark:text-gray-400">
+    <table class="w-full text-left text-gray-500 rtl:text-right dark:text-gray-400">
       <tbody>
-        <tr class="bg-white border-t dark:bg-gray-800 dark:border-gray-700">
-          <th
-            scope="row"
-            class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white"
-          >
-            IP
-          </th>
+        <tr class="border-t bg-white dark:border-gray-700 dark:bg-gray-800">
+          <th scope="row" class="whitespace-nowrap px-6 py-4 font-medium text-gray-900 dark:text-white"> IP</th>
           <td class="px-6 py-4 text-right">{serverStatus.ip}:{serverStatus.port}</td>
         </tr>
-        <tr class="bg-white border-t dark:bg-gray-800 dark:border-gray-700">
-          <th
-            scope="row"
-            class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white"
-          >
-            Ping
-          </th>
+        <tr class="border-t bg-white dark:border-gray-700 dark:bg-gray-800">
+          <th scope="row" class="whitespace-nowrap px-6 py-4 font-medium text-gray-900 dark:text-white"> Ping</th>
           <td class="px-6 py-4 text-right">{serverStatus.debug.error.ping}</td>
         </tr>
-        <tr class="bg-white border-t border-b dark:bg-gray-800 dark:border-gray-700">
-          <th
-            scope="row"
-            class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white"
-          >
-            Query
-          </th>
+        <tr class="border-b border-t bg-white dark:border-gray-700 dark:bg-gray-800">
+          <th scope="row" class="whitespace-nowrap px-6 py-4 font-medium text-gray-900 dark:text-white"> Query</th>
           <td class="px-6 py-4 text-right">{serverStatus.debug.error.query}</td>
         </tr>
       </tbody>
