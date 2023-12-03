@@ -31,3 +31,24 @@ All commands are run from the root of the project, from a terminal:
 | `npm run format`          | Format project by prettier                       |
 | `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
 | `npm run astro -- --help` | Get help using the Astro CLI                     |
+
+## 🐳 Docker
+
+via make
+
+```bash
+# start container
+$ make docker/start
+
+# stop container
+$ make docker/stop
+
+# remove container
+$ make docker/rm
+
+# remove container and volume
+$ make docker/reset
+
+# view logs
+$ make docker/logs
+```
