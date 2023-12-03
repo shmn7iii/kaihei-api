@@ -1,0 +1,98 @@
+---
+import { type ApiResults } from "../lib/getServerStatus.ts";
+
+export interface Props {
+  serverStatus: ApiResults;
+}
+
+const { serverStatus } = Astro.props
+---
+<div class="w-3/4 items-center">
+  <div
+    class="p-4 mb-8 text-lg text-green-800 border border-green-300 rounded-lg bg-green-50 dark:bg-gray-800 dark:text-green-400 dark:border-green-800"
+    role="alert"
+  >
+    <span class="font-bold">Server Online!</span> You can connect
+    server mc.shmn7iii.net:25565
+  </div>
+  <div class="relative overflow-x-auto">
+    <table class="w-full text-left rtl:text-right text-gray-500 dark:text-gray-400">
+      <tbody>
+        <tr class="bg-white border-t dark:bg-gray-800 dark:border-gray-700">
+          <th
+            scope="row"
+            class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white"
+          >
+            Status
+          </th>
+          <td class="px-6 py-4 text-right">
+            Online
+          </td>
+        </tr>
+        <tr class="bg-white border-t dark:bg-gray-800 dark:border-gray-700">
+          <th
+            scope="row"
+            class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white"
+          >
+            Version
+          </th>
+          <td class="px-6 py-4 text-right">{serverStatus.version}</td>
+        </tr>
+        <tr class="bg-white border-t dark:bg-gray-800 dark:border-gray-700">
+          <th
+            scope="row"
+            class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white"
+          >
+            Players
+          </th>
+          <td class="px-6 py-4 text-right">
+            {serverStatus.players?.online}/{serverStatus.players?.max}
+          </td>
+        </tr>
+        <tr class="bg-white border-t border-b dark:bg-gray-800 dark:border-gray-700">
+          <th
+            scope="row"
+            class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white"
+          >
+            MOTD
+          </th>
+          <td class="px-6 py-4 text-right">{serverStatus.motd?.clean[0]}</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h2 class="mt-8 mb-2 text-xl font-bold dark:text-white">Debug Info</h2>
+
+    <table class="w-full text-left rtl:text-right text-gray-500 dark:text-gray-400">
+      <tbody>
+        <tr class="bg-white border-t dark:bg-gray-800 dark:border-gray-700">
+          <th
+            scope="row"
+            class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white"
+          >
+            IP
+          </th>
+          <td class="px-6 py-4 text-right">{serverStatus.ip}:{serverStatus.port}</td>
+        </tr>
+        <tr class="bg-white border-t dark:bg-gray-800 dark:border-gray-700">
+          <th
+            scope="row"
+            class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white"
+          >
+            Ping
+          </th>
+          <td class="px-6 py-4 text-right">{serverStatus.debug.ping}</td>
+        </tr>
+        <tr class="bg-white border-t border-b dark:bg-gray-800 dark:border-gray-700">
+          <th
+            scope="row"
+            class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white"
+          >
+            Query
+          </th>
+          <td class="px-6 py-4 text-right">{serverStatus.debug.query}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
