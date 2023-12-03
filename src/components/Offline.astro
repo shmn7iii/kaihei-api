@@ -1,4 +1,5 @@
 ---
+import { Icon } from "astro-icon";
 import { type ApiResults } from "../lib/getServerStatus.ts";
 
 export interface Props {
@@ -31,7 +32,14 @@ const { serverStatus } = Astro.props;
       <tbody>
         <tr class="border-t bg-white dark:border-gray-700 dark:bg-gray-800">
           <th scope="row" class="whitespace-nowrap px-6 py-4 font-medium text-gray-900 dark:text-white"> IP</th>
-          <td class="px-6 py-4 text-right">{serverStatus.ip}:{serverStatus.port}</td>
+          <td class="px-6 py-4 text-right">
+            <div style="display: flex; align-items: center; justify-content: flex-end;">
+              <button class="copy" id="copy-ip" type="button">
+                <Icon name="lucide:copy" />
+              </button>
+              {serverStatus.ip}:{serverStatus.port}
+            </div>
+          </td>
         </tr>
         <tr class="border-t bg-white dark:border-gray-700 dark:bg-gray-800">
           <th scope="row" class="whitespace-nowrap px-6 py-4 font-medium text-gray-900 dark:text-white"> Ping</th>
@@ -45,3 +53,22 @@ const { serverStatus } = Astro.props;
     </table>
   </div>
 </div>
+
+<style>
+  .copy {
+    width: 20px;
+    height: 20px;
+    margin-right: 0.4rem;
+    cursor: pointer;
+  }
+</style>
+
+<script define:vars={{ serverStatus }}>
+  function writeClipboard(content) {
+    navigator.clipboard.writeText(content);
+  }
+
+  document
+    .getElementById("copy-ip")
+    .addEventListener("click", writeClipboard(serverStatus.ip + ":" + serverStatus.port));
+</script>
