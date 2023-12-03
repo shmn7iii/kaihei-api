@@ -6,6 +6,7 @@ export interface Props {
 }
 
 const { serverStatus } = Astro.props;
+const mcServerHost = import.meta.env.PUBLIC_MC_SERVER_HOST;
 ---
 
 <div class="w-3/4 items-center">
@@ -13,7 +14,7 @@ const { serverStatus } = Astro.props;
     class="mb-8 rounded-lg border border-green-300 bg-green-50 p-4 text-lg text-green-800 dark:border-green-800 dark:bg-gray-800 dark:text-green-400"
     role="alert"
   >
-    <span class="font-bold">Server Online!</span> You can connect server {serverStatus.ip}:{serverStatus.port}
+    <span class="font-bold">Server Online!</span>
   </div>
   <div class="relative overflow-x-auto">
     <table class="w-full text-left text-gray-500 rtl:text-right dark:text-gray-400">
@@ -21,6 +22,10 @@ const { serverStatus } = Astro.props;
         <tr class="border-t bg-white dark:border-gray-700 dark:bg-gray-800">
           <th scope="row" class="whitespace-nowrap px-6 py-4 font-medium text-gray-900 dark:text-white"> Status</th>
           <td class="px-6 py-4 text-right"> Online</td>
+        </tr>
+        <tr class="border-t bg-white dark:border-gray-700 dark:bg-gray-800">
+          <th scope="row" class="whitespace-nowrap px-6 py-4 font-medium text-gray-900 dark:text-white"> Address</th>
+          <td class="px-6 py-4 text-right">{mcServerHost}</td>
         </tr>
         <tr class="border-t bg-white dark:border-gray-700 dark:bg-gray-800">
           <th scope="row" class="whitespace-nowrap px-6 py-4 font-medium text-gray-900 dark:text-white"> Version</th>
