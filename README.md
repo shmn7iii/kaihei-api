@@ -1,4 +1,4 @@
-# mcstatus
+# kaihei
 
 ## 🚀 Project Structure
 
