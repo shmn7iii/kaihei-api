@@ -6,14 +6,10 @@ import Offline from "../components/Offline.astro";
 import { getServerStatus } from "../lib/getServerStatus";
 
 const serverStatus = await getServerStatus();
-
-const title = "Status | " + import.meta.env.PUBLIC_MC_SERVER_HOST;
 ---
 
-<Layout title={title}>
-  <main class="flex min-h-screen flex-col items-center p-10">
-    {serverStatus.online ? <Online serverStatus={serverStatus} /> : <Offline serverStatus={serverStatus} />}
-  </main>
+<Layout>
+  {serverStatus.Err ? <Offline serverStatus={serverStatus} /> : <Online serverStatus={serverStatus} />}
 </Layout>
 
 <style></style>

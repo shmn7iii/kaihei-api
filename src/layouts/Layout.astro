@@ -1,13 +1,5 @@
 ---
-import { Image } from "astro:assets";
 
-interface Props {
-  title: string;
-}
-
-const { title } = Astro.props;
-
-const mcServerHost = import.meta.env.PUBLIC_MC_SERVER_HOST;
 ---
 
 <!doctype html>
@@ -17,29 +9,27 @@ const mcServerHost = import.meta.env.PUBLIC_MC_SERVER_HOST;
     <meta name="description" content="Astro description" />
     <meta name="viewport" content="width=device-width" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link href="https://fonts.googleapis.com/css2?family=Fugaz+One&display=swap" rel="stylesheet" />
     <meta name="generator" content={Astro.generator} />
-    <title>{title}</title>
+    <title>kaihei</title>
   </head>
-  <body>
-    <nav class="border-b border-gray-200 bg-white dark:border-gray-600 dark:bg-gray-900">
-      <div class="mx-auto flex max-w-screen-xl flex-wrap items-center justify-between p-4">
-        <a href="/" class="flex items-center space-x-3 rtl:space-x-reverse">
-          <Image src="/favicon.svg" alt="sttnbnb logo" width={30} height={30} />
-          <span class="self-center whitespace-nowrap text-2xl font-semibold dark:text-white">{mcServerHost}</span>
-        </a>
+  <body class="h-screen w-screen px-44 py-6">
+    <a href="/" class="absolute">
+      <h1 class="mb-4 text-3xl font-extrabold text-gray-900 md:text-5xl lg:text-6xl" style="font-family: 'Fugaz One';">
+        <span class="bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 bg-clip-text text-transparent">
+          kaihei
+        </span>
+        <small class="ms-2 font-sans text-2xl font-bold">Minecraft server status</small>
+      </h1>
+    </a>
 
-        <button
-          type="button"
-          class="mb-2 me-2 rounded-lg bg-gradient-to-r from-lime-200 via-lime-400 to-lime-500 px-5 py-2.5 text-center text-sm font-medium text-gray-900 hover:bg-gradient-to-br focus:outline-none focus:ring-4 focus:ring-lime-300 dark:focus:ring-lime-800"
-        >
-          Go Minecraft ↗︎
-        </button>
-      </div>
-    </nav>
-
-    <slot />
+    <div class="flex h-full w-full items-center">
+      <slot />
+    </div>
   </body>
 </html>
+
+<!--
 <style is:global>
   :root {
     --accent: 136, 58, 234;
@@ -61,4 +51,4 @@ const mcServerHost = import.meta.env.PUBLIC_MC_SERVER_HOST;
       Courier New,
       monospace;
   }
-</style>
+</style> -->

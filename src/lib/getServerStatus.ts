@@ -1,42 +1,34 @@
 export interface Error {
-  ping: string;
-  query: string;
+  Syscall: string;
+  Err: string;
 }
 
-export interface Debug {
-  ping: boolean;
-  query: boolean;
-  error: Error;
-}
-
-export interface Players {
-  online: number;
-  max: number;
-}
-
-export interface Motd {
-  raw: string[];
-  clean: string[];
-  html: string[];
+export interface Plugin {
+  Name: string;
+  Version: string;
 }
 
 export interface ApiResults {
-  ip: string;
-  port: number;
-  online: boolean;
-  version: boolean | null;
-  players: Players | null;
-  motd: Motd | null;
-  debug: Debug;
+  MOTD: string | null;
+  Version: string | null;
+  ServerVersion: string | null;
+  Plugins: Plugin[] | null;
+  Map: string | null;
+  OnlinePlayers: number | null;
+  MaxPlayers: number | null;
+  Port: number | null;
+  Host: string | null;
+  Err: Error | null;
 }
 
 export async function getServerStatus() {
-  const url = "https://api.mcsrvstat.us/3/" + import.meta.env.PUBLIC_MC_SERVER_HOST;
+  const url = import.meta.env.PUBLIC_KAIHEI_API_URL;
   const response = await fetch(url, {
     headers: {
       "Content-Type": "application/json",
     },
   });
   const data = (await response.json()) as ApiResults;
+
   return data;
 }
