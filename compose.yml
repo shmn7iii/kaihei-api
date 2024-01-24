@@ -1,0 +1,19 @@
+version: "3.8"
+
+services:
+  frontend:
+    build:
+      context: ./frontend
+    restart: always
+    env_file:
+      - ./frontend/.env
+    ports:
+      - "4321:4321"
+  backend:
+    build:
+      context: ./backend
+    restart: always
+    env_file:
+      - ./backend/.env
+    ports:
+      - "1321:1321"
