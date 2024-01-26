@@ -17,5 +17,5 @@ $ cp backend/.env.sample backend/.env
 Then, up the servers.
 
 ```bash
-$ docker compose up -d
+$ make docker/up
 ```
