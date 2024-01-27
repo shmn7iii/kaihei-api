@@ -4,10 +4,10 @@ import { type ApiResults } from "../lib/getServerStatus.ts";
 
 export interface Props {
   serverStatus: ApiResults;
+  mcServerHost: string;
 }
 
-const { serverStatus } = Astro.props;
-const mcServerHost = import.meta.env.PUBLIC_MC_SERVER_HOST;
+const { serverStatus, mcServerHost } = Astro.props;
 ---
 
 <div class="w-full items-center">
@@ -59,14 +59,10 @@ const mcServerHost = import.meta.env.PUBLIC_MC_SERVER_HOST;
   }
 </style>
 
-<script define:vars={{ serverStatus, mcServerHost }}>
+<script define:vars={{ mcServerHost }}>
   function writeClipboard(content) {
     navigator.clipboard.writeText(content);
   }
 
   document.getElementById("copy-address").addEventListener("click", writeClipboard(mcServerHost));
-
-  document
-    .getElementById("copy-ip")
-    .addEventListener("click", writeClipboard(serverStatus.ip + ":" + serverStatus.port));
 </script>
