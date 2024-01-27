@@ -4,6 +4,7 @@ import (
 	"net/http"
 	"os"
 	"strconv"
+	"time"
 
 	"github.com/dreamscached/minequery/v2"
 	"github.com/labstack/echo"
@@ -23,7 +24,11 @@ func main() {
 }
 
 func status(c echo.Context) error {
-	res, err := minequery.QueryFull(MinecraftServerHost, MinecraftServerPort)
+	pinger := minequery.NewPinger(
+		minequery.WithTimeout(1 * time.Second),
+	)
+	res, err := pinger.QueryFull(MinecraftServerHost, MinecraftServerPort)
+
 	if err != nil {
 		return c.JSON(http.StatusInternalServerError, err)
 	}
