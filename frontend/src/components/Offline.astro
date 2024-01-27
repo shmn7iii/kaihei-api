@@ -11,17 +11,14 @@ const { mcServerHost } = Astro.props;
 ---
 
 <div class="w-full items-center">
-  <div
-    class="mb-8 rounded-lg border border-red-300 bg-red-50 p-4 text-lg text-red-800 dark:border-red-800 dark:bg-gray-800 dark:text-red-400"
-    role="alert"
-  >
-    <span class="font-bold">Server Offline!</span>
-  </div>
+  <h1 class="mb-4 text-4xl font-extrabold leading-none tracking-tight text-gray-900 md:text-5xl lg:text-6xl">
+    Server is <mark class="px-2 text-white bg-gray-600 rounded">Offline</mark> !
+  </h1>
   <div class="relative overflow-x-auto">
-    <table class="w-full text-left text-gray-500 rtl:text-right dark:text-gray-400">
+    <table class="w-full text-left text-gray-500 rtl:text-right">
       <tbody>
-        <tr class="border-b border-t bg-white dark:border-gray-700 dark:bg-gray-800">
-          <th scope="row" class="whitespace-nowrap px-6 py-4 font-medium text-gray-900 dark:text-white"> Address</th>
+        <tr class="border-b border-t bg-white">
+          <th scope="row" class="whitespace-nowrap px-6 py-4 font-medium text-gray-700">Address</th>
           <td class="px-6 py-4 text-right">
             <div style="display: flex; align-items: center; justify-content: flex-end;">
               <button class="copy" id="copy-address" type="button">

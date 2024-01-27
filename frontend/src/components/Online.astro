@@ -11,17 +11,14 @@ const { serverStatus, mcServerHost } = Astro.props;
 ---
 
 <div class="w-full items-center">
-  <div
-    class="mb-8 rounded-lg border border-green-300 bg-green-50 p-4 text-lg text-green-800 dark:border-green-800 dark:bg-gray-800 dark:text-green-400"
-    role="alert"
-  >
-    <span class="font-bold">Server Online!</span>
-  </div>
+  <h1 class="mb-4 text-4xl font-extrabold leading-none tracking-tight text-gray-900 md:text-5xl lg:text-6xl">
+    Server is <mark class="px-2 text-white bg-green-600 rounded">Online</mark> !
+  </h1>
   <div class="relative overflow-x-auto">
-    <table class="w-full text-left text-gray-500 rtl:text-right dark:text-gray-400">
+    <table class="w-full text-left text-gray-500 rtl:text-right">
       <tbody>
-        <tr class="border-t bg-white dark:border-gray-700 dark:bg-gray-800">
-          <th scope="row" class="whitespace-nowrap px-6 py-4 font-medium text-gray-900 dark:text-white"> Address</th>
+        <tr class="border-t bg-white">
+          <th scope="row" class="whitespace-nowrap px-6 py-4 font-medium text-gray-900">Address</th>
           <td class="px-6 py-4 text-right">
             <div style="display: flex; align-items: center; justify-content: flex-end;">
               <button class="copy" id="copy-address" type="button">
@@ -31,18 +28,18 @@ const { serverStatus, mcServerHost } = Astro.props;
             </div>
           </td>
         </tr>
-        <tr class="border-t bg-white dark:border-gray-700 dark:bg-gray-800">
-          <th scope="row" class="whitespace-nowrap px-6 py-4 font-medium text-gray-900 dark:text-white"> Version</th>
+        <tr class="border-t bg-white">
+          <th scope="row" class="whitespace-nowrap px-6 py-4 font-medium text-gray-900">Version</th>
           <td class="px-6 py-4 text-right">{serverStatus.Version}</td>
         </tr>
-        <tr class="border-t bg-white dark:border-gray-700 dark:bg-gray-800">
-          <th scope="row" class="whitespace-nowrap px-6 py-4 font-medium text-gray-900 dark:text-white"> Players</th>
+        <tr class="border-t bg-white">
+          <th scope="row" class="whitespace-nowrap px-6 py-4 font-medium text-gray-900">Players</th>
           <td class="px-6 py-4 text-right">
             {serverStatus.OnlinePlayers}/{serverStatus.MaxPlayers}
           </td>
         </tr>
-        <tr class="border-b border-t bg-white dark:border-gray-700 dark:bg-gray-800">
-          <th scope="row" class="whitespace-nowrap px-6 py-4 font-medium text-gray-900 dark:text-white"> MOTD</th>
+        <tr class="border-b border-t bg-white">
+          <th scope="row" class="whitespace-nowrap px-6 py-4 font-medium text-gray-900">MOTD</th>
           <td class="px-6 py-4 text-right">{serverStatus.MOTD}</td>
         </tr>
       </tbody>
