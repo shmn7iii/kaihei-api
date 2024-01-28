@@ -17,7 +17,7 @@ export const Header = (): JSX.Element => {
         >
           kaihei
         </span>
-        <small className="ms-2 font-sans text-2xl font-bold">
+        <small className="ms-8 font-sans text-2xl font-bold">
           Minecraft server status
         </small>
       </h1>
