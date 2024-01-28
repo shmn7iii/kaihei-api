@@ -33,13 +33,13 @@ export type useKaiheiApiStatusResult = [
 export const useKaiheiApiStatus = (): useKaiheiApiStatusResult => {
   const [loading, setLoading] = useState(false);
   const [result, setResult] = useState<ApiResults | null>(null);
-  const url = process.env.NEXT_PUBLIC_KAIHEI_API_URL;
+  const url = process.env.NEXT_PUBLIC_KAIHEI_API_URL || "dummy";
 
   const getKaiheiApiStatus = async () => {
     setLoading(true);
 
     try {
-      const response = await fetch("http://localhost:1321/api/status", {
+      const response = await fetch(new URL(url), {
         cache: "no-store",
         headers: {
           "Content-Type": "application/json",
