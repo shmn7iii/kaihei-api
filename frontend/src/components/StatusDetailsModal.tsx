@@ -1,6 +1,7 @@
 import { Modal } from "flowbite-react";
 import { ApiResults } from "@/hooks/useKaiheiApiStatus";
 import { Dispatch, SetStateAction } from "react";
+import { FaRegCopy } from "react-icons/fa";
 
 export type StatusDetailsModalProps = {
   openModal: boolean;
@@ -13,7 +14,13 @@ export const StatusDetailsModal = ({
   setOpenModal,
   result,
 }: StatusDetailsModalProps): JSX.Element => {
-  const mcServerHost = process.env.NEXT_PUBLIC_MC_SERVER_HOST;
+  const mcServerHost =
+    process.env.NEXT_PUBLIC_MC_SERVER_HOST || result?.Host || "dummy";
+  const mcServerAddress = mcServerHost + ":" + result?.Port;
+
+  const writeClipboard = (content: string) => {
+    navigator.clipboard.writeText(content);
+  };
 
   return (
     <>
@@ -30,7 +37,14 @@ export const StatusDetailsModal = ({
                   >
                     Address
                   </th>
-                  <td className="px-6 py-4 text-right">{mcServerHost}</td>
+                  <td className="px-6 py-4 text-right">
+                    <div className="flex items-center justify-end">
+                      <button onClick={() => writeClipboard(mcServerAddress)}>
+                        <FaRegCopy className="me-1" />
+                      </button>
+                      <p>{mcServerAddress}</p>
+                    </div>
+                  </td>
                 </tr>
                 <tr className="border-t bg-white">
                   <th
