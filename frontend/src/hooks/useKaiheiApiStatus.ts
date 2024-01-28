@@ -70,7 +70,7 @@ export const useKaiheiApiStatus = (): useKaiheiApiStatusResult => {
 
   useEffect(() => {
     getKaiheiApiStatus();
-  });
+  }, []);
 
   return [{ loading, result }];
 };
