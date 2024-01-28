@@ -16,7 +16,6 @@ export default function RootLayout({
     <html lang="en">
       <head>
         <meta name="viewport" content="width=device-width" />
-        <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
       </head>
       <body className="h-screen w-screen px-44 py-6">
         <Header />
