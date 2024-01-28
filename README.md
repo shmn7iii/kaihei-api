@@ -2,7 +2,7 @@
 
 ## 🏠 Project Structure
 
-- Frontend: TypeScript, Astro
+- Frontend: TypeScript, Next.js, Tailwind
 - Backend: Go, echo
 
 ## 🚀 Setup
