@@ -1,14 +1,33 @@
 "use client";
 
-import { StatusHeading } from "@/components/StatusHeading";
-import { useKaiheiApiStatus } from "@/hooks/useKaiheiApiStatus";
+import { useState } from "react";
+import { Loading } from "@/components/Loading";
+import { Offline } from "@/components/Offline";
+import { Online } from "@/components/Online";
+import { useKaiheiStatus } from "@/hooks/useKaiheiStatus";
 
 export const dynamic = "force-dynamic";
 
 const Content = (): JSX.Element => {
-  const [{ loading, result }] = useKaiheiApiStatus();
+  const [{ loading, error, result }] = useKaiheiStatus();
+  const [openModal, setOpenModal] = useState(false);
 
-  return <StatusHeading loading={loading} result={result} />;
+  if (loading) return <Loading />;
+  if (error) return <Offline />;
+
+  return (
+    <>
+      {result.Online ? (
+        <Online
+          apiResponse={result.ApiResponse}
+          openModal={openModal}
+          setOpenModal={setOpenModal}
+        />
+      ) : (
+        <Offline />
+      )}
+    </>
+  );
 };
 
 export default function Home() {

@@ -1,22 +1,22 @@
 import { Modal } from "flowbite-react";
 import { Dispatch, SetStateAction } from "react";
 import { FaRegCopy } from "react-icons/fa";
-import { ApiResults } from "@/hooks/useKaiheiApiStatus";
+import { ApiResponse } from "@/hooks/useKaiheiStatus";
 
-export type StatusDetailsModalProps = {
+export type DetailsModalProps = {
   openModal: boolean;
   setOpenModal: Dispatch<SetStateAction<boolean>>;
-  result: ApiResults | null;
+  apiResponse: ApiResponse | null;
 };
 
-export const StatusDetailsModal = ({
+export const DetailsModal = ({
   openModal,
   setOpenModal,
-  result,
-}: StatusDetailsModalProps): JSX.Element => {
+  apiResponse,
+}: DetailsModalProps): JSX.Element => {
   const mcServerHost =
-    process.env.NEXT_PUBLIC_MC_SERVER_HOST ?? result?.Host ?? "dummy";
-  const mcServerAddress = mcServerHost + ":" + result?.Port;
+    process.env.NEXT_PUBLIC_MC_SERVER_HOST ?? apiResponse?.Host ?? "dummy";
+  const mcServerAddress = mcServerHost + ":" + apiResponse?.Port;
 
   const writeClipboard = (content: string) => {
     navigator.clipboard.writeText(content);
@@ -52,7 +52,7 @@ export const StatusDetailsModal = ({
                 >
                   Version
                 </th>
-                <td className="px-6 py-4 text-right">{result?.Version}</td>
+                <td className="px-6 py-4 text-right">{apiResponse?.Version}</td>
               </tr>
               <tr className="border-t bg-white">
                 <th
@@ -62,7 +62,7 @@ export const StatusDetailsModal = ({
                   Players
                 </th>
                 <td className="px-6 py-4 text-right">
-                  {result?.OnlinePlayers}/{result?.MaxPlayers}
+                  {apiResponse?.OnlinePlayers}/{apiResponse?.MaxPlayers}
                 </td>
               </tr>
               <tr className="border-t bg-white">
@@ -72,7 +72,7 @@ export const StatusDetailsModal = ({
                 >
                   MOTD
                 </th>
-                <td className="px-6 py-4 text-right">{result?.MOTD}</td>
+                <td className="px-6 py-4 text-right">{apiResponse?.MOTD}</td>
               </tr>
             </tbody>
           </table>
