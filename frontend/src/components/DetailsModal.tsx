@@ -1,4 +1,4 @@
-import { Modal } from "flowbite-react";
+import { Modal, Tooltip } from "flowbite-react";
 import { Dispatch, SetStateAction } from "react";
 import { FaRegCopy } from "react-icons/fa";
 import { ApiResponse } from "@/hooks/useKaiheiStatus";
@@ -38,10 +38,12 @@ export const DetailsModal = ({
                 </th>
                 <td className="px-6 py-4 text-right">
                   <div className="flex items-center justify-end">
-                    <button onClick={() => writeClipboard(mcServerAddress)}>
-                      <FaRegCopy className="me-1" />
-                    </button>
-                    <p>{mcServerAddress}</p>
+                    <Tooltip content="Copied!" trigger="click">
+                      <button onClick={() => writeClipboard(mcServerAddress)}>
+                        <FaRegCopy size={17} />
+                      </button>
+                    </Tooltip>
+                    <p className="ms-2">{mcServerAddress}</p>
                   </div>
                 </td>
               </tr>
