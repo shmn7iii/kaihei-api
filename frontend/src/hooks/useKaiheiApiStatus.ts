@@ -33,7 +33,7 @@ export type useKaiheiApiStatusResult = [
 export const useKaiheiApiStatus = (): useKaiheiApiStatusResult => {
   const [loading, setLoading] = useState(false);
   const [result, setResult] = useState<ApiResults | null>(null);
-  const url = process.env.NEXT_PUBLIC_KAIHEI_API_URL || "dummy";
+  const url = process.env.NEXT_PUBLIC_KAIHEI_API_URL ?? "dummy";
 
   const getKaiheiApiStatus = async () => {
     setLoading(true);
@@ -70,7 +70,7 @@ export const useKaiheiApiStatus = (): useKaiheiApiStatusResult => {
 
   useEffect(() => {
     getKaiheiApiStatus();
-  }, []);
+  });
 
   return [{ loading, result }];
 };

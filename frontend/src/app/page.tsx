@@ -8,11 +8,7 @@ export const dynamic = "force-dynamic";
 const Content = (): JSX.Element => {
   const [{ loading, result }] = useKaiheiApiStatus();
 
-  return (
-    <>
-      <StatusHeading loading={loading} result={result} />
-    </>
-  );
+  return <StatusHeading loading={loading} result={result} />;
 };
 
 export default function Home() {

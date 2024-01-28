@@ -1,7 +1,7 @@
 import { Spinner } from "flowbite-react";
-import { ApiResults } from "@/hooks/useKaiheiApiStatus";
 import { Dispatch, SetStateAction, useState } from "react";
 import { StatusDetailsModal } from "./StatusDetailsModal";
+import { ApiResults } from "@/hooks/useKaiheiApiStatus";
 
 export type StatusHeadingProps = {
   loading: boolean;
