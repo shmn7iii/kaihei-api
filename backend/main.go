@@ -8,6 +8,7 @@ import (
 
 	"github.com/dreamscached/minequery/v2"
 	"github.com/labstack/echo"
+	"github.com/labstack/echo/middleware"
 )
 
 var (
@@ -18,6 +19,8 @@ var (
 
 func main() {
 	e := echo.New()
+
+	e.Use(middleware.CORS())
 	e.GET("/api/status", status)
 
 	e.Logger.Fatal(e.Start(":" + ServerPort))
