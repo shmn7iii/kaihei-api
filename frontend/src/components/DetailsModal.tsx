@@ -1,7 +1,7 @@
 import { Modal, Tooltip } from "flowbite-react";
 import { Dispatch, SetStateAction } from "react";
 import { FaRegCopy } from "react-icons/fa";
-import { ApiResponse } from "@/hooks/useKaiheiStatus";
+import { ApiResponse } from "@/hooks/fetchKaiheiStatus";
 
 export type DetailsModalProps = {
   openModal: boolean;
