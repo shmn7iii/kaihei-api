@@ -18,7 +18,7 @@ export default function RootLayout({
       <head>
         <meta name="viewport" content="width=device-width" />
       </head>
-      <body className="h-screen w-screen px-44 py-6">
+      <body className="h-dvh w-screen px-44 py-6">
         <Header />
         <div className="flex h-full w-full items-center">{children}</div>
         <Footer />
