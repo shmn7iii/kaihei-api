@@ -4,18 +4,16 @@ services:
   frontend:
     build:
       context: ./frontend
-    container_name: frontend
+    container_name: kaihei-frontend
     restart: always
+    network_mode: host
     env_file:
       - ./frontend/.env
-    ports:
-      - "4321:3000"
   backend:
     build:
       context: ./backend
-    container_name: backend
+    container_name: kaihei-backend
     restart: always
+    network_mode: host
     env_file:
       - ./backend/.env
-    ports:
-      - "1321:1321"
