@@ -1,5 +1,6 @@
 "use client";
 
+import { Button } from "flowbite-react";
 import { useState } from "react";
 import { DetailsModal } from "./DetailsModal";
 import { KaiheiStatus } from "@/hooks/fetchKaiheiStatus";
@@ -14,17 +15,29 @@ export const StatusButton = ({ kaiheiStatus }: StatusButtonProps) => {
   return (
     <>
       {kaiheiStatus.Online ? (
-        <button onClick={() => setOpenModal(true)}>
-          <mark className="mx-1 px-2 text-white bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 rounded">
+        <>
+          <div className="mx-1 px-4 py-1.5 text-white bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 rounded">
             Online !
-          </mark>
-        </button>
+          </div>
+
+          <div className="fixed left-1/2 bottom-20">
+            <Button color="gray" pill onClick={() => setOpenModal(true)}>
+              Show details
+            </Button>
+          </div>
+        </>
       ) : (
-        <button disabled={true}>
-          <mark className="mx-1 px-2 text-white bg-gray-600 rounded">
+        <>
+          <div className="mx-1 px-4 py-1.5 text-white bg-gray-600 rounded">
             Offline
-          </mark>
-        </button>
+          </div>
+
+          <div className="fixed left-1/2 bottom-20">
+            <Button color="gray" pill disabled>
+              Show details
+            </Button>
+          </div>
+        </>
       )}
 
       <DetailsModal
