@@ -7,9 +7,15 @@ import { KaiheiStatus } from "@/hooks/fetchKaiheiStatus";
 
 type StatusButtonProps = {
   kaiheiStatus: KaiheiStatus;
+  hostName: string;
+  hostResolved: boolean;
 };
 
-export const StatusButton = ({ kaiheiStatus }: StatusButtonProps) => {
+export const StatusButton = ({
+  kaiheiStatus,
+  hostName,
+  hostResolved,
+}: StatusButtonProps) => {
   const [openModal, setOpenModal] = useState(false);
 
   return (
@@ -44,6 +50,8 @@ export const StatusButton = ({ kaiheiStatus }: StatusButtonProps) => {
         openModal={openModal}
         setOpenModal={setOpenModal}
         apiResponse={kaiheiStatus.ApiResponse}
+        hostName={hostName}
+        hostResolved={hostResolved}
       />
     </>
   );

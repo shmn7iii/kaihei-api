@@ -7,17 +7,17 @@ export type DetailsModalProps = {
   openModal: boolean;
   setOpenModal: Dispatch<SetStateAction<boolean>>;
   apiResponse: ApiResponse | null;
+  hostName: string;
+  hostResolved: boolean;
 };
 
 export const DetailsModal = ({
   openModal,
   setOpenModal,
   apiResponse,
+  hostName,
+  hostResolved,
 }: DetailsModalProps): JSX.Element => {
-  const mcServerHost =
-    process.env.NEXT_PUBLIC_MC_SERVER_HOST ?? apiResponse?.Host ?? "dummy";
-  const mcServerAddress = mcServerHost;
-
   const writeClipboard = (content: string) => {
     navigator.clipboard.writeText(content);
   };
@@ -36,12 +36,12 @@ export const DetailsModal = ({
                 <div className="flex items-center justify-end">
                   <div className="mt-2">
                     <Tooltip content="Copied!" trigger="click">
-                      <button onClick={() => writeClipboard(mcServerAddress)}>
+                      <button onClick={() => writeClipboard(hostName)}>
                         <FaRegCopy size={17} />
                       </button>
                     </Tooltip>
                   </div>
-                  <p className="ms-2">{mcServerAddress}</p>
+                  <p className="ms-2">{hostName}</p>
                 </div>
               </Table.Cell>
             </Table.Row>
@@ -74,7 +74,7 @@ export const DetailsModal = ({
                 Resolve status
               </Table.Cell>
               <Table.Cell className="text-gray-500 text-right">
-                REsolved!
+                {hostResolved ? "Resolved" : "Error while resolving host."}
               </Table.Cell>
             </Table.Row>
           </Table.Body>
