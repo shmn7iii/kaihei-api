@@ -20,7 +20,10 @@ var (
 func main() {
 	e := echo.New()
 
-	e.Use(middleware.CORS())
+	e.Use(middleware.CORSWithConfig(middleware.CORSConfig{
+		AllowOrigins: []string{"https://kaihei.shmn7iii.net", "http://localhost:1993"},
+		AllowMethods: []string{http.MethodGet},
+	}))
 	e.GET("/api/status", status)
 
 	e.Logger.Fatal(e.Start(":" + ServerPort))
@@ -28,7 +31,7 @@ func main() {
 
 func status(c echo.Context) error {
 	pinger := minequery.NewPinger(
-		minequery.WithTimeout(1 * time.Second),
+		minequery.WithTimeout(3 * time.Second),
 	)
 	res, err := pinger.QueryFull(MinecraftServerHost, MinecraftServerPort)
 
