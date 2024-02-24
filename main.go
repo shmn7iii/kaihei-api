@@ -36,7 +36,7 @@ func status(c echo.Context) error {
 	res, err := pinger.QueryFull(MinecraftServerHost, MinecraftServerPort)
 
 	if err != nil {
-		return c.JSON(http.StatusInternalServerError, err)
+		return c.JSON(http.StatusOK, err)
 	}
 
 	return c.JSON(http.StatusOK, res)

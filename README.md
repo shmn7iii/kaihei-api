@@ -1,21 +1,30 @@
-# kaihei
+# kaihei-api
 
-## 🏠 Project Structure
+## Specification
 
-- Frontend: TypeScript, Next.js, Tailwind
-- Backend: Go, echo
+- Go 1.21
 
-## 🚀 Setup
-
-Copy .env of each frontend and backend, and write them.
+## Setup
 
 ```bash
-$ cp frontend/.env.sample frontend/.env
-$ cp backend/.env.sample backend/.env
+$ cp .env.sample .env
+
+# create docker container (build included)
+$ make docker/run
 ```
 
-Then, up the servers.
+## Make commands
 
 ```bash
-$ make docker/up
+# start container
+$ make docker/start
+
+# stop container
+$ make docker/stop
+
+# remove container
+$ make docker/rm
+
+# view logs
+$ make docker/logs
 ```
