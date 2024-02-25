@@ -14,8 +14,8 @@ import (
 var (
 	ServerPort             = os.Getenv("SERVER_PORT")
 	CORS_ALLOW_ORIGIN      = os.Getenv("CORS_ALLOW_ORIGIN")
+	MinecraftServerFqdn    = os.Getenv("MINECRAFT_SERVER_FQDN")
 	MinecraftServerAddress = os.Getenv("MINECRAFT_SERVER_ADDRESS")
-	MinecraftServerHost    = os.Getenv("MINECRAFT_SERVER_HOST")
 	MinecraftServerPort, _ = strconv.Atoi(os.Getenv("MINECRAFT_SERVER_PORT"))
 )
 
@@ -36,6 +36,7 @@ func main() {
 type Summary struct {
 	Online bool
 	State  State
+	FQDN   string
 	Ping   any
 	Query  any
 }
@@ -49,7 +50,7 @@ func summary(c echo.Context) error {
 	network := false
 	server := false
 
-	ping, err := minequery.Ping17(MinecraftServerHost, MinecraftServerPort)
+	ping, err := minequery.Ping17(MinecraftServerFqdn, MinecraftServerPort)
 
 	if err == nil {
 		network = true
@@ -67,6 +68,7 @@ func summary(c echo.Context) error {
 			Server:  server,
 			Network: network,
 		},
+		FQDN:  MinecraftServerFqdn,
 		Ping:  ping,
 		Query: query,
 	}
@@ -76,19 +78,22 @@ func summary(c echo.Context) error {
 
 type Network struct {
 	Result bool
+	FQDN   string
 }
 
 func network(c echo.Context) error {
-	_, err := minequery.Ping17(MinecraftServerHost, MinecraftServerPort)
+	_, err := minequery.Ping17(MinecraftServerFqdn, MinecraftServerPort)
 
 	if err != nil {
 		return c.JSON(http.StatusOK, &Network{
 			Result: false,
+			FQDN:   MinecraftServerFqdn,
 		})
 	}
 
 	return c.JSON(http.StatusOK, &Network{
 		Result: true,
+		FQDN:   MinecraftServerFqdn,
 	})
 }
 
