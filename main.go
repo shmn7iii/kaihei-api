@@ -81,6 +81,7 @@ type Network struct {
 	FQDN   string
 }
 
+// FQDNで指定するのでインターネット経由でPINGをみる
 func network(c echo.Context) error {
 	_, err := minequery.Ping17(MinecraftServerFqdn, MinecraftServerPort)
 
@@ -97,6 +98,7 @@ func network(c echo.Context) error {
 	})
 }
 
+// Addressで指定するのでローカルネットワーク経由でクエリをみる
 func query(c echo.Context) error {
 	res, err := minequery.QueryFull(MinecraftServerAddress, MinecraftServerPort)
 

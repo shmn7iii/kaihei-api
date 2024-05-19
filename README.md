@@ -4,6 +4,19 @@
 
 - Go 1.21
 
+## API
+### `/api/network/*`
+ネットワークを経由するAPIs
+
+### `/api/network/ping`
+ネットワークを経由でPing計測
+
+### `/api/local/*`
+ローカルネットワークで完結するAPIs
+
+### `/api/local/query`
+ローカルネットワーク経由でqueryをみる
+
 ## Setup
 
 ```bash
